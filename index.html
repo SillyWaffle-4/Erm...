@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WENSEN THE BIG BACK | THE EMOJI SAGA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Rock+Salt&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #f0f0f0;
+            --accent-orange: #ff6b1a;
+            --accent-pink: #ff00ff;
+            --accent-gold: #ffd700;
+            --accent-blue: #00d2ff;
+            --accent-red: #ff3e3e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Bangers', cursive;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .rock-salt {
+            font-family: 'Rock Salt', cursive;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🍜';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 15vw, 10rem);
+            color: var(--accent-orange);
+            text-shadow: 5px 5px 0px #000, 0 0 20px rgba(255, 107, 26, 0.5);
+            animation: shake 0.5s infinite alternate;
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        }
+
+        /* Chapter Sections */
+        section {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .chapter-title {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: var(--accent-blue);
+            text-align: center;
+        }
+
+        .story-text {
+            font-size: 1.25rem;
+            background: rgba(30, 30, 30, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 8px solid var(--accent-blue);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote {
+            font-family: 'Rock Salt', cursive;
+            color: var(--accent-orange);
+            display: block;
+            margin: 20px 0;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        /* Emoji Decorations */
+        .emoji-float {
+            position: absolute;
+            font-size: 5rem;
+            opacity: 0.2;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(15deg); }
+        }
+
+        .super-brain-box {
+            border-color: var(--accent-pink) !important;
+            box-shadow: 0 0 30px var(--accent-pink) !important;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px var(--accent-pink); }
+            to { box-shadow: 0 0 50px var(--accent-pink); }
+        }
+
+        .olympus-box {
+            border-color: var(--accent-gold) !important;
+            background: linear-gradient(135deg, rgba(30,30,30,0.95), rgba(70,50,0,0.2));
+        }
+
+        /* GIMME FOOD Button */
+        #gimme-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 25px 40px;
+            font-family: 'Bangers', cursive;
+            font-size: 2rem;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 107, 26, 0.4);
+            z-index: 1000;
+            transition: transform 0.2s, background 0.2s;
+            border: 4px solid #fff;
+        }
+
+        #gimme-btn:hover {
+            transform: scale(1.1) rotate(-3deg);
+            background: #ff8540;
+        }
+
+        /* Shower Effect */
+        .showering-emoji {
+            position: fixed;
+            top: -50px;
+            font-size: 3rem;
+            pointer-events: none;
+            z-index: 999;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        /* Section Background Gradients */
+        .section-bg {
+            height: 200px;
+            width: 100%;
+            margin: 40px 0;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 6rem;
+        }
+
+        .bg-noodles { background: linear-gradient(45deg, #2c3e50, #000); }
+        .bg-shanghai { background: linear-gradient(45deg, #e67e22, #000); }
+        .bg-brain { background: linear-gradient(45deg, #8e44ad, #000); }
+        .bg-olympus { background: linear-gradient(45deg, #f1c40f, #000); }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-30px);}
+            60% {transform: translateY(-15px);}
+        }
+
+    </style>
+</head>
+<body>
+
+    <button id="gimme-btn">GIMME FOOD OR ELSE!</button>
+
+    <div class="hero">
+        <h1>WENSEN</h1>
+        <p class="rock-salt">THE BIG BACK EMOJI SAGA</p>
+        <div style="margin-top: 50px; font-size: 2rem; animation: bounce 2s infinite;">🍜 SCROLL FOR SNACKS 🥟</div>
+    </div>
+
+    <section id="chapter1">
+        <div class="emoji-float" style="top: 10%; right: 5%;">🥟</div>
+        <h2 class="chapter-title">Chapter 1: The Hunger Begins</h2>
+        <div class="story-text">
+            <p>Wensen was a force of nature, or perhaps just a very loud, very empty stomach with limbs. His day had started with a failed mugging.</p>
+            <span class="quote">"GIMME ALL OF YOUR FOOD OR ELSE!"</span>
+            <p>He had bellowed at a local citizen, cracking his knuckles with a sound like dry timber snapping. The citizen simply walked away. Ten minutes later, Wensen’s short attention span flickered out. He wandered toward <strong>Dragon Bowl Noodles</strong>.</p>
+            <p>He burst through the doors like a wrecking ball 🏀. Aiden, the weary proprietor, tried to greet him, but Wensen only had one thing on his mind:</p>
+            <span class="quote">"GIMME FOOOOOD..."</span>
+            <p>Aiden and Sienna, his assistant, eventually gave in. Wensen inhaled the entire bowl. He didn't chew; he simply inhaled. "I WANT MOREEEEEEEEEEE!" he roared. To get rid of him, Aiden lied about a free food truck in Shanghai. Wensen took the bait and marched out into the night.</p>
+        </div>
+        <div class="section-bg bg-noodles">🍜🥢🥟</div>
+    </section>
+
+    <section id="chapter2">
+        <div class="emoji-float" style="top: 50%; left: -5%;">🚌</div>
+        <h2 class="chapter-title" style="color: var(--accent-orange);">Chapter 2: The Shanghai Quest</h2>
+        <div class="story-text" style="border-color: var(--accent-orange);">
+            <p>Wensen’s internal compass was calibrated by his stomach. He saw a park and assumed he was in a lush Chinese valley 🌳. He tried to hail a bus with a stick.</p>
+            <span class="quote">"DOES THIS BOX TAKE ME TO THE FREE NOODLES IN SHANGHAI?"</span>
+            <p>He ended up at the mall food court 🛍️, which he was convinced was the literal city of Shanghai. He "robbed" a bourbon chicken stall and was eventually escorted out by "Shanghai Border Police" (security guards) 👮.</p>
+            <p>Desperate, he spotted a fire engine 🚒. "THE SHANGHAI TRUCK!" he screamed, inhaling the firemen's sandwiches. Eventually, he found his way to a <strong>Costco warehouse</strong>—the "Holy Grail of Shanghai." He wore a 30-pack of paper towels as a cape and declared himself King of Ohio.</p>
+        </div>
+        <div class="section-bg bg-shanghai">🍗🛍️🚒</div>
+    </section>
+
+    <section id="chapter3">
+        <div class="emoji-float" style="bottom: 10%; right: 5%;">📦</div>
+        <h2 class="chapter-title" style="color: var(--accent-gold);">Chapter 3: The Return of the King</h2>
+        <div class="story-text" style="border-color: var(--accent-gold);">
+            <p>After being tricked onto a plane to the actual Shanghai ✈️, Wensen eventually grew homesick for his favorite "victims." He mailed himself back to Dragon Bowl Noodles in a massive shipping crate 📦.</p>
+            <span class="quote">"I’M BAAAAAACK!"</span>
+            <p>He returned wearing a silk robe and holding a soggy dumpling. He built a "Shanghai Annex" out of cardboard boxes in the parking lot. But after a failed attempt to tape Aiden to a refrigerator, a cold thought hit him. "Do you guys... not like the 'Or Else'?"</p>
+            <p>Realizing he was the local disaster, Wensen went on a quest for a brain 🧠.</p>
+        </div>
+    </section>
+
+    <section id="chapter4">
+        <div class="emoji-float" style="top: 10%; left: 10%;">🧪</div>
+        <h2 class="chapter-title" style="color: var(--accent-pink);">Chapter 4: The Super Brain</h2>
+        <div class="story-text super-brain-box">
+            <p>Wensen bought a plastic Halloween brain and taped it to his head. After a bowl of extra-spicy "Brain-Boost" udon 🌶️, the plastic began to glow. Wensen’s eyes sharpened into blue lasers of pure intellect.</p>
+            <span class="quote">"I can see the molecular structure of the gluten. I must become the world's landlord."</span>
+            <p>He conquered the world 🌎. Asia became a vegetable patch. The Eiffel Tower became a toothpick. He sat upon a throne of gold-plated ramen packs in his Great Wall of Mayonnaise. But Aiden and Sienna had a plan: <strong>The Omega Sample</strong>—a bowl of boiled, unseasoned macaroni.</p>
+            <p>The blandness short-circuited his brain. The empire crumbled. Wensen returned to his usual self, dreaming of drive-thrus 🍟.</p>
+        </div>
+        <div class="section-bg bg-brain">🧠⚡🌎</div>
+    </section>
+
+    <section id="chapter5">
+        <div class="emoji-float" style="bottom: 10%; right: 5%;">🏛️</div>
+        <h2 class="chapter-title" style="color: #fff; text-shadow: 0 0 20px var(--accent-blue);">Chapter 5: Battle of Olympus</h2>
+        <div class="story-text olympus-box">
+            <p>Wensen found a comic book and decided to challenge Zeus ⚡. He climbed a skyscraper, found his old cracked Super Brain, and charged through a portal to Mount Olympus.</p>
+            <span class="quote">"HEAR ME, CLOUD MAN! GIMME THE NECTAR... OR ELSE!"</span>
+            <p>He roasted hot dogs with lightning bolts. Zeus fled to Aiden’s shop for help. In a final confrontation at the Parthenon 🏛️, Aiden fed Wensen a brick of "Blandness Extract" while Sienna plunged a ceramic chef's knife into his plastic brain.</p>
+            <p>A blinding white light erupted. When the dust settled, Wensen was gone. All that remained was a single, charred toothpick.</p>
+        </div>
+        <div class="section-bg bg-olympus">🏛️🌩️⚡</div>
+    </section>
+
+    <section id="epilogue" style="text-align: center;">
+        <h2 class="rock-salt" style="color: var(--accent-orange); font-size: 3rem;">THE END.</h2>
+        <p style="margin-top: 20px;">Aiden and Sienna sat on the curb, finally at peace. For the first time in years, they weren't afraid of the door opening.</p>
+        <div style="font-size: 8rem; margin-top: 50px;">😴🥤🥢</div>
+    </section>
+
+    <footer style="padding: 50px; text-align: center; color: #666;">
+        <p>Created with 🍜 for the Wensen Empire</p>
+    </footer>
+
+    <script>
+        const foodEmojis = ['🍔', '🍕', '🍜', '🍣', '🍰', '🍗', '🍟', '🥟', '🌭', '🍩', '🌮', '🍤', '🥩'];
+
+        const btn = document.getElementById('gimme-btn');
+
+        btn.addEventListener('click', () => {
+            // Create a shower of 30 emojis
+            for (let i = 0; i < 40; i++) {
+                createEmoji();
+            }
+        });
+
+        function createEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'showering-emoji';
+            emoji.innerText = foodEmojis[Math.floor(Math.random() * foodEmojis.length)];
+            
+            // Random horizontal position
+            const left = Math.random() * 100;
+            emoji.style.left = left + 'vw';
+            
+            // Random size
+            const size = 1.5 + Math.random() * 3;
+            emoji.style.fontSize = size + 'rem';
+            
+            // Random fall duration
+            const duration = 2 + Math.random() * 3;
+            emoji.style.animationDuration = duration + 's';
+            
+            // Random delay so they don't all start at once
+            emoji.style.animationDelay = Math.random() * 0.5 + 's';
+
+            document.body.appendChild(emoji);
+
+            // Remove emoji after animation ends
+            setTimeout(() => {
+                emoji.remove();
+            }, (duration + 0.5) * 1000);
+        }
+
+        // Simple Scroll Reveal
+        const reveal = () => {
+            const sections = document.querySelectorAll('.story-text');
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < window.innerHeight * 0.85) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', reveal);
+
+        // Initialize reveal state
+        document.querySelectorAll('.story-text').forEach(s => {
+            s.style.opacity = '0';
+            s.style.transform = 'translateY(40px)';
+            s.style.transition = 'all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        });
+        
+        // Initial check
+        reveal();
+    </script>
+</body>
+</html>
